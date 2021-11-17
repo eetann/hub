@@ -16,6 +16,9 @@ import {
   Link,
 } from "@chakra-ui/react";
 import {ExternalLinkIcon} from '@chakra-ui/icons'
+import {ModalMarkdown} from "./modal-md"
+import {Fragment} from 'react';
+
 
 // https://eetann.microcms.io/apis/work/settings/model
 interface ContentScheme extends MicroCMSListContent {
@@ -33,8 +36,8 @@ export function Work({works}: {works: WorkContent[]}) {
       {works.map((work) => {
         const {isOpen, onOpen, onClose} = useDisclosure();
         return (
-          <>
-            <WrapItem key={work.id} bg="white"
+          <Fragment key={work.id} >
+            <WrapItem bg="white"
               p="4"
               rounded="4"
               boxShadow="base"
@@ -61,7 +64,11 @@ export function Work({works}: {works: WorkContent[]}) {
               <ModalContent>
                 <ModalHeader>{work.name}</ModalHeader>
                 <ModalCloseButton />
-                <ModalBody>{work.body}</ModalBody>
+                {typeof work.body !== "undefined" ?
+                  <ModalBody>
+                    <ModalMarkdown body={work.body} />
+                  </ModalBody>
+                  : <></>}
                 <ModalFooter>
                   <Link href={work.url} isExternal mx="auto" fontSize="lg" fontWeight="semibold">
                     Here!
@@ -70,7 +77,7 @@ export function Work({works}: {works: WorkContent[]}) {
                 </ModalFooter>
               </ModalContent>
             </Modal>
-          </>
+          </Fragment>
         )
       })}
     </Wrap>

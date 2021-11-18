@@ -45,23 +45,27 @@ export function Work({works}: {works: WorkContent[]}) {
               boxShadow="base"
               _hover={{boxShadow: "dark-lg"}}
               onClick={onOpen}
+              cursor="pointer"
             >
               <Box>
-                {typeof work.image !== "undefined" ?
-                  <Image
-                    src={work.image.url}
-                    alt={work.name}
-                    width="300px"
-                    height="250px"
-                    objectFit="contain"
-                  />
-                  :
-                  <Center width="300px" height="250px" bgColor="cyan.500"
-                    fontSize="50px" color="white" fontWeight="semibold"
-                  >
-                    (*'u'*)ノ
-                  </Center>
-                }
+                <Box width="300px" height="250px">
+                  {typeof work.image !== "undefined" ?
+                    <Image
+                      src={work.image.url}
+                      alt={work.name}
+                      width="300px"
+                      height="220px"
+                      objectFit="contain"
+                    />
+                    :
+                    <Center bgColor="cyan.500"
+                      fontSize="50px" color="white" fontWeight="semibold"
+                      height="220px"
+                    >
+                      (*'u'*)ノ
+                    </Center>
+                  }
+                </Box>
                 <Box as="h4"
                   mt="1"
                   fontWeight="semibold"

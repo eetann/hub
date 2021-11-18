@@ -2,6 +2,7 @@ import Image from 'next/image'
 import {MicroCMSClientObj} from "../libs/client";
 import {MicroCMSImage, MicroCMSListContent, MicroCMSListResponse, MicroCMSContentId, MicroCMSDate} from "microcms-js-sdk";
 import {
+  Text,
   Box,
   Wrap,
   WrapItem,
@@ -14,6 +15,7 @@ import {
   ModalBody,
   ModalFooter,
   Link,
+  Center,
 } from "@chakra-ui/react";
 import {ExternalLinkIcon} from '@chakra-ui/icons'
 import {ModalMarkdown} from "./modal-md"
@@ -44,14 +46,22 @@ export function Work({works}: {works: WorkContent[]}) {
               _hover={{boxShadow: "dark-lg"}}
               onClick={onOpen}
             >
-              <Box maxW="sm">
-                <Image
-                  src={typeof work.image !== "undefined" ? work.image.url : "https://placehold.jp/450x300.png"}
-                  alt={work.name}
-                  width={450}
-                  height={300}
-                  objectFit="contain"
-                />
+              <Box>
+                {typeof work.image !== "undefined" ?
+                  <Image
+                    src={work.image.url}
+                    alt={work.name}
+                    width="300px"
+                    height="250px"
+                    objectFit="contain"
+                  />
+                  :
+                  <Center width="300px" height="250px" bgColor="cyan.500"
+                    fontSize="50px" color="white" fontWeight="semibold"
+                  >
+                    (*'u'*)ノ
+                  </Center>
+                }
                 <Box as="h4"
                   mt="1"
                   fontWeight="semibold"
@@ -66,6 +76,15 @@ export function Work({works}: {works: WorkContent[]}) {
                 <ModalCloseButton />
                 {typeof work.body !== "undefined" ?
                   <ModalBody>
+                    {typeof work.image !== "undefined" ?
+                      <Center>
+                        <Image
+                          src={work.image.url}
+                          alt={work.name}
+                          width={450}
+                          height={300}
+                          objectFit="contain"
+                        /></Center> : <></>}
                     <ModalMarkdown body={work.body} />
                   </ModalBody>
                   : <></>}

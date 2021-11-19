@@ -43,7 +43,7 @@ export function Work({works}: {works: WorkContent[]}) {
               p="4"
               rounded="4"
               boxShadow="base"
-              _hover={{boxShadow: "dark-lg"}}
+              _hover={{boxShadow: "outline"}}
               onClick={onOpen}
               cursor="pointer"
             >
@@ -93,7 +93,7 @@ export function Work({works}: {works: WorkContent[]}) {
                   </ModalBody>
                   : <></>}
                 <ModalFooter>
-                  <Link href={work.url} isExternal mx="auto" fontSize="lg" fontWeight="semibold">
+                  <Link href={work.url} isExternal mx="auto" fontSize="lg" fontWeight="semibold" color="teal.500">
                     Here!
                     <ExternalLinkIcon mx="2px" />
                   </Link>

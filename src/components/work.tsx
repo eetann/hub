@@ -107,9 +107,12 @@ export function Work({works}: {works: WorkContent[]}) {
   )
 }
 
-export const getWorks = async (client: MicroCMSClientObj): Promise<WorkContent[]> => {
+export const getWorks = async (client: MicroCMSClientObj, _draftKey: string): Promise<WorkContent[]> => {
   const data = await client.get<MicroCMSListResponse<ContentScheme>>(
-    {endpoint: "work"}
+    {
+      endpoint: "work",
+      queries: {draftKey: _draftKey},
+    }
   );
   return data.contents;
 }

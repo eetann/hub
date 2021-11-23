@@ -17,7 +17,7 @@ export function Bio({bios}: {bios: BioContent[]}) {
   return (
     <Wrap px="1rem" spacing={4} justify="center" align="center">
       {bios.map((bio) => (
-        <Tooltip label={bio.name}>
+        <Tooltip label={bio.name} key={bio.id}>
           <a href={bio.url} target="_blank" rel="noopener noreferrer">
             <WrapItem key={bio.id} bg="white" lineHeight="0"
               padding="1"

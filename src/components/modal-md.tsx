@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 type Props = {body: string};
 
 export const ModalMarkdown: React.FC<Props> = ({body}) => {
-  return <ReactMarkdown children={body}
+  return <ReactMarkdown
     components={{
       text: ({children}) => {
         return <Text>{children}</Text>
@@ -29,5 +29,5 @@ export const ModalMarkdown: React.FC<Props> = ({body}) => {
         return <Link href={href} color="teal.500">{children}</Link>;
       },
     }}
-  />;
+  >{body}</ReactMarkdown>;
 }

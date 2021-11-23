@@ -26,7 +26,7 @@ export const ModalMarkdown: React.FC<Props> = ({body}) => {
         return <ListItem py="1">{children}</ListItem>
       },
       a: ({children, href}) => {
-        return <Link href={href} color="teal.500">{children}</Link>;
+        return <Link isExternal href={href} color="teal.500">{children}</Link>;
       },
     }}
   >{body}</ReactMarkdown>;

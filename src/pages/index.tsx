@@ -1,6 +1,5 @@
 import {GetStaticPropsContext} from "next";
-// import Link from "next/link";
-import {isDraft, client} from "../libs/client";
+import {client} from "../libs/client";
 import {Bio, BioContent, getBios} from "../components/bio"
 import {Profile, ProfileContent, getProfile} from "../components/profile"
 import {Work, WorkContent, getWorks} from "../components/work"
@@ -21,10 +20,9 @@ export default function Home({bios, profile, works}: {bios: BioContent[], profil
 }
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
-  const draftKey = isDraft(context.previewData) ? context.previewData.draftKey : "";
   const bios = await getBios(client);
   const profile = await getProfile(client);
-  const works = await getWorks(client, draftKey);
+  const works = await getWorks(client);
   return {
     props: {
       bios: bios,

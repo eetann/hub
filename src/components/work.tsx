@@ -106,7 +106,7 @@ export function Work({works}: {works: WorkContent[]}) {
   return (
     <Wrap spacing={5} align="center">
       {works.map((work) => {
-        <OneWork key={work.id} work={work} />
+        return <OneWork key={work.id} work={work} />;
       })}
     </Wrap>
   )
@@ -114,9 +114,7 @@ export function Work({works}: {works: WorkContent[]}) {
 
 export const getWorks = async (client: MicroCMSClientObj): Promise<WorkContent[]> => {
   const data = await client.get<MicroCMSListResponse<ContentScheme>>(
-    {
-      endpoint: "work",
-    }
+    {endpoint: "work"}
   );
   return data.contents;
 }
